@@ -3,6 +3,7 @@ package kristofferversjon;
 public class DrawPile extends CardPile {
 	private static final long serialVersionUID = 1L;
 
+	//bygger en kortstokk
 	public DrawPile(){
 		for (int i=0;i<4;i++){
 			for (int j=0;j<13;j++){
