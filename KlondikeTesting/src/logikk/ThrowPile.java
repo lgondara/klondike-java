@@ -6,11 +6,14 @@ public class ThrowPile extends CardPile {
 		
 	}
 	
-	public Card drawCard() {
-		
+	//FIXXXXXXXXXxXxX
+	public void drawCard(CardPile throwPile, CardPile source) {
+		if(!isEmpty()) {
+			source.push(throwPile.pop());
+		}
 	}
 	
 	public void addCard(Card card) {
-		throwPile.
+		this.push(card);
 	}
 }

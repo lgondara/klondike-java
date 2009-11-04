@@ -6,9 +6,8 @@ public class DrawPile extends CardPile {
 	
 	//FIX throwPile osv..
 	public void drawCard(CardPile pile) {
-		if(pile.top().getFaceUp()) {
+		if(!isEmpty()) {
 			throwPile.addCard(pile.pop());
-		
 		}
 	}
 }
