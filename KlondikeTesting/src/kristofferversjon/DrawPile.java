@@ -57,15 +57,16 @@ public class DrawPile extends CardPile {
 	}			
 	**/
 	
-	public void drawCard() {
+	public void drawCard(ThrowPile target) {
 		if(this.isEmpty()) {
-			// throwpile ->> drawpile
+			for (int i = 0; i < target.size(); i++) {
+				this.push(target.get(i));
+			}
 		}
 		else {
-			push(this.pop()); // skal inn i throwpile
+			target.push(this.pop());
 		}
 	}
-	
 
 //testing
 	public static void main(String[] args) {
