@@ -2,10 +2,10 @@ package kristofferversjon;
 
 public class Klondike {
 	
-	private CardPile[] foundation;
-	private CardPile[] tableau;
-	private CardPile throwPile;
-	private CardPile drawPile;
+	private FoundationPile[] foundation;
+	private TableauPile[] tableau;
+	private ThrowPile throwPile;
+	private DrawPile drawPile;
 	
 	// fix me
 	public Klondike() {
@@ -40,8 +40,13 @@ public class Klondike {
 		return drawPile;
 	}
 	
-	public void solved() {
-		
+	public boolean solved() {
+		for (int i = 0; i < foundation.length; i++) {
+			if (foundation[i].solved()) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	
