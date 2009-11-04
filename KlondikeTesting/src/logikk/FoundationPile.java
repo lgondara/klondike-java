@@ -1,11 +1,11 @@
 package logikk;
 
 public class FoundationPile extends CardPile {
-
-	CardPile foundation;
+//foundation er der du bygger opp gjennom spillet
+//looooooooooool
 	
 	public FoundationPile() {
-		foundation = new CardPile();
+		super();
 	}
 	
 	public boolean canTake(Card card) {
@@ -13,17 +13,15 @@ public class FoundationPile extends CardPile {
 			return card.getFace() == 0;
 		}	
 		else {
-			Card top = top();
+			Card top = peek();
 			return (card.getSuit() == top.getSuit()) 
 					&& (card.getFace() == (top.getFace()+1));
 		}
 	}
 	
-	//FIX
 	public void addCard(Card card) {
-		if(canTake(card)) {
-			push(card);
-		}
+		this.push(card);
+		this.peek().setFaceUp();
 	}
 	
 	//FIX
@@ -33,6 +31,9 @@ public class FoundationPile extends CardPile {
 	
 	//FIX
 	public boolean solved() {
+		if (this.peek().getFace() == 12) {
+			return true;
+		}
 		return false;
 	}
 	

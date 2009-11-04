@@ -2,21 +2,32 @@ package logikk;
 
 public class Card {
 
-	private int face;
-	private String suit;
+	public int face;
+	public String suit;
 	private boolean faceUp;
+	private String color;
 	
 	public Card(int face, String suit) {
 		this.suit = suit;
 		this.face = face;
+		if(this.suit == "C" || this.suit =="S"){
+			this.color = "black";
+		}
+		else{
+			this.color = "red";
+		}
 	}
 	
 	public String getSuit() {
-		return suit;
+		return this.suit;
+	}
+	
+	public String getColor(){
+		return this.color;
 	}
 	
 	public int getFace() {
-		return face;
+		return this.face;
 	}
 	
 	public void setFaceDown() {

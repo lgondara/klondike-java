@@ -1,7 +1,7 @@
 package logikk;
 
 public class TableauPile extends CardPile {
-
+//tableaupile er de 7 bunkene
 	public TableauPile() {
 		
 	}
@@ -11,7 +11,7 @@ public class TableauPile extends CardPile {
 			return card.getFace() == 12;
 		}
 		else {
-			Card top = top();
+			Card top = peek();
 			return (card.getSuit() != top.getSuit() 
 					&& card.getFace() == top.getFace()-1);
 		}
@@ -22,8 +22,10 @@ public class TableauPile extends CardPile {
 		return false;
 	}
 	
-	public void drawCard() {
-		
+	public void drawCard(Card card) {
+		if (canTake(card)) {
+			addCard(this.pop());
+		}
 	}
 	
 	public void drawBuild() {
