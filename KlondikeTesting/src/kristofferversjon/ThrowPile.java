@@ -7,10 +7,14 @@ public class ThrowPile extends CardPile {
 	}
 	
 	//FIXXXXXXXXXxXxX
-	public void drawCard(CardPile source) {
-		if(this.isEmpty()) {
+	public void addCard(CardPile source) {
+		if(this.isEmpty()){
 			this.push(source.pop());
 		}
+	}
+	
+	public void drawCard(CardPile target){
+		target.push(this.pop());
 	}
 	
 	public static void main(String[] args) {
