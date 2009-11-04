@@ -47,8 +47,5 @@ public class Klondike {
 			}
 		}
 		return false;
-	}
-	
-	
-	
+	}	
 }
