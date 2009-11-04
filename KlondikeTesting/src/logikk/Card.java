@@ -27,6 +27,10 @@ public class Card {
 		this.faceUp = true;
 	}
 	
+	public boolean getFaceUp() {
+		return faceUp;
+	}
+	
 	public String toString() {
 		return suit+face;
 	}

@@ -2,9 +2,13 @@ package logikk;
 
 public class DrawPile extends CardPile {
 	
-	public Card drawCard(CardPile pile) {
-		if(pile) {
-			
+	ThrowPile throwPile;
+	
+	//FIX throwPile osv..
+	public void drawCard(CardPile pile) {
+		if(pile.top().getFaceUp()) {
+			throwPile.addCard(pile.pop());
+		
 		}
 	}
 }
