@@ -10,7 +10,7 @@ public class Klondike {
 	// fix me
 	public Klondike() {
 		foundation = new CardPile[4];
-		tableau = new CardPile[7];
+		tableau = new TableauPile[7];
 		
 		throwPile = new CardPile();
 		drawPile = new CardPile();
