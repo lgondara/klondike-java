@@ -1,18 +1,19 @@
 package logikk;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
-public class CardPile {
+public class CardPile extends Stack {
 	
-	private Stack<Card> pile;
+	private ArrayList<Card> pile;
 	
 	public CardPile() {
-		this.pile = new Stack<Card>();
+		this.pile = new ArrayList<Card>();
 	}
 	
 	//fiiiiix
 	public CardPile(CardPile pile, int i) {
-		this.pile = new Stack<Card>();
+		this.pile = new ArrayList<Card>();
 		
 		for (i = 0; i < pile.getSize(); i++) {
 			Card card = pile.getCard(i);
