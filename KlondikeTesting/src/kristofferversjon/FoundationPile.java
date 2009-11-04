@@ -19,11 +19,9 @@ public class FoundationPile extends CardPile {
 		}
 	}
 	
-	//FIX
 	public void addCard(Card card) {
-		if(canTake(card)) {
-			push(card);
-		}
+		this.push(card);
+		this.peek().setFaceUp();
 	}
 	
 	//FIX
