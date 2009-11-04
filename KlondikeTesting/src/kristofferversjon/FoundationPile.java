@@ -2,7 +2,7 @@ package kristofferversjon;
 
 public class FoundationPile extends CardPile {
 //foundation er der du bygger opp gjennom spillet
-
+//looooooooooool
 	
 	public FoundationPile() {
 		super();
