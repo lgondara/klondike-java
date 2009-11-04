@@ -20,8 +20,11 @@ public class DrawPile extends CardPile {
 			}
 		}	
 		this.shuffle();
+		System.out.println("Lagde ny kortstokk" + this);
+		System.out.println("Størrelse: "+ this.size());
 		
 	}
+	
 
 	public void shuffle(){
 		Card temp;
@@ -55,12 +58,9 @@ public class DrawPile extends CardPile {
 	**/
 	
 
-
+//testing
 	public static void main(String[] args) {
-		DrawPile dp = new DrawPile();
-		
-		System.out.println("Lagde ny kortstokk: " +dp);
-		System.out.println("Størrelse: "+ dp.size());
+		DrawPile dp = new DrawPile();	
 	}
 
 }
