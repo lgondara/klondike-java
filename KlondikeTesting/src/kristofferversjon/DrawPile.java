@@ -57,6 +57,15 @@ public class DrawPile extends CardPile {
 	}			
 	**/
 	
+	public void drawCard() {
+		if(this.isEmpty()) {
+			// throwpile ->> drawpile
+		}
+		else {
+			push(this.pop()); // skal inn i throwpile
+		}
+	}
+	
 
 //testing
 	public static void main(String[] args) {
