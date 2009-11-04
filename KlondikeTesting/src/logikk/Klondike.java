@@ -1,23 +1,11 @@
 package logikk;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-public class Klondike extends JFrame {
+public class Klondike {
 	
 	private FoundationPile[] foundation;
 	private TableauPile[] tableau;
 	private ThrowPile throwPile;
 	private DrawPile drawPile;
-	private JFrame window; 
-	private JPanel pane;
-	
 	// fix me
 	public Klondike() {
 		init();
@@ -30,15 +18,6 @@ public class Klondike extends JFrame {
 		throwPile = new ThrowPile();
 		drawPile = new DrawPile();
 		
-		window = new JFrame("Klondike");
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//window.setSize(800, 600);
-		pane = new JPanel();
-		pane.setPreferredSize(new Dimension(1024, 600));
-		pane.setBackground(Color.PINK);
-		window.getContentPane().add(pane);
-		window.pack();
-		window.setVisible(true);
 	}
 	
 	public static void main(String[] args) {
