@@ -13,7 +13,7 @@ public class FoundationPile extends CardPile {
 			return card.getFace() == 0;
 		}	
 		else {
-			Card top = top();
+			Card top = peek();
 			return (card.getSuit() == top.getSuit()) 
 					&& (card.getFace() == (top.getFace()+1));
 		}

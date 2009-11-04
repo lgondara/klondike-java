@@ -11,7 +11,7 @@ public class TableauPile extends CardPile {
 			return card.getFace() == 12;
 		}
 		else {
-			Card top = top();
+			Card top = peek();
 			return (card.getSuit() != top.getSuit() 
 					&& card.getFace() == top.getFace()-1);
 		}
