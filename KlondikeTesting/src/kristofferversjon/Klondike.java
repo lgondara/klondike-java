@@ -9,11 +9,11 @@ public class Klondike {
 	
 	// fix me
 	public Klondike() {
-		foundation = new CardPile[4];
+		foundation = new FoundationPile[4];
 		tableau = new TableauPile[7];
 		
-		throwPile = new CardPile();
-		drawPile = new CardPile();
+		throwPile = new ThrowPile();
+		drawPile = new DrawPile();
 	}
 	
 	public CardPile getTableau(int pos) {
