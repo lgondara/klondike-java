@@ -22,8 +22,10 @@ public class TableauPile extends CardPile {
 		return false;
 	}
 	
-	public void drawCard() {
-		
+	public void drawCard(Card card) {
+		if (canTake(card)) {
+			addCard(this.pop());
+		}
 	}
 	
 	public void drawBuild() {
