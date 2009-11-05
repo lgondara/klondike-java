@@ -7,17 +7,20 @@ import javax.swing.*;
 public class GUI extends JFrame {
 	
 	private JFrame window;
-	private JPanel panel;
+	private Table table;
 	
 	public GUI() {
 		window = new JFrame("Klondike");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		panel = new JPanel();
-		panel.setPreferredSize(new Dimension(1024, 600));
-		panel.setBackground(Color.PINK);
-		window.getContentPane().add(panel);
+		window.getContentPane().add(table);
 		window.pack();
 		window.setVisible(true);
+		
+		table.refreshMouseAreas();
+	}
+	
+	public void repaint() {
+		table.repaint();
 	}
 	
 	public static void main(String[] args) {
