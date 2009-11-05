@@ -20,8 +20,10 @@ public class FoundationPile extends CardPile {
 	}
 	
 	public void addCard(Card card) {
-		this.push(card);
-		this.peek().setFaceUp();
+		if(this.canTake(card)){
+			this.push(card);
+			this.peek().setFaceUp();
+		}
 	}
 	
 	//FIX

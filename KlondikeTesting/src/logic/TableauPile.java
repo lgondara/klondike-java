@@ -11,13 +11,12 @@ public class TableauPile extends CardPile {
 			return card.getFace() == 12;
 		}
 		else {
-			Card top = peek();
-			return (card.getSuit() != top.getSuit() 
+			Card top = this.peek();
+			return (card.getColor() != top.getColor() 
 					&& card.getFace() == top.getFace()-1);
 		}
 	}
 	
-	// fix me
 	public boolean canTake(BuildPile pile) {
 		return false;
 	}

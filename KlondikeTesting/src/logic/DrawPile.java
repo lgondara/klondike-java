@@ -17,6 +17,7 @@ public class DrawPile extends CardPile {
 				else if (i == 3)
 					suit = "C";	
 				Card aCard = new Card(j,suit);
+				aCard.setFaceDown();
 				this.push(aCard);
 			}
 		}	
