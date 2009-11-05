@@ -12,6 +12,9 @@ public class Klondike {
 	// fix me
 	public Klondike() {
 		foundation = new FoundationPile[4];
+		for(int i = 0; i< foundation.length ; i++){
+			foundation[i] = new FoundationPile();
+		}
 		tableau = new TableauPile[7];
 		for (int i = 0; i < tableau.length; i++) {
 			tableau[i] = new TableauPile();
@@ -29,7 +32,7 @@ public class Klondike {
 		return false;
 	}	
 
-	//superhax klasse som gjør alt!
+	//superhax klasse deler ut alt!
 	public void dealAllCards(){
 		for(int i = 0; i<7;i++){
 			int counter = 0;
@@ -42,8 +45,7 @@ public class Klondike {
 			this.tableau[i].push(c);
 			System.out.println(tableau[i]);
 		}
-
-
+		System.out.println("Antall kort i drawpile nå: " + this.drawPile.size()+ "       WTF?!!!!!!!!");
 	}
 
 
@@ -51,7 +53,7 @@ public class Klondike {
 	public static void main(String[] args) {
 		Klondike k = new Klondike();
 		k.dealAllCards();
-
+		
 	}
 
 
