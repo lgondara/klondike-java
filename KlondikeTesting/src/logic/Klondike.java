@@ -90,7 +90,40 @@ public class Klondike {
 		}
 	}
 	
-	
+	public void printTablaeu() {
+		for (int i = 0; i < foundation.length; i++) {
+			if (this.foundation[i].isEmpty()) {
+				System.out.print("Empty\t");
+			}
+			else {
+				System.out.print(this.foundation[i].peek().toString());
+			}
+		}
+		
+		System.out.println("");
+		System.out.println("");
+		
+		if(this.drawPile.isEmpty()) {
+			System.out.println("Drawpile: Empty");
+		}
+		else {
+			System.out.println("Drawpile: " + this.getDrawPile().peek().toString());
+		}
+		
+		if (this.throwPile.isEmpty()) {
+			System.out.println("ThrowPile: Empty");
+		}
+		else {
+			System.out.println("Throwpile: " + this.getThrowPile().peek().toString());
+		}
+		
+		System.out.println("");
+		System.out.println("");
+		
+		for (int i = 0; i < tableau.length; i++) {
+			System.out.println(this.tableau[i].toString());
+		}
+	}
 	
 	
 	public void pushThrowCardToTableau(TableauPile tp){
