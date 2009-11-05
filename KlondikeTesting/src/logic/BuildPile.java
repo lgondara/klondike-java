@@ -6,6 +6,7 @@ public class BuildPile extends CardPile {
 	public BuildPile(){
 		super();
 	}
+	
 //denne har egen metode for push siden det kreves spesielle regler her
 	public void push(CardPile source){
 		if(!this.isEmpty()){
@@ -28,19 +29,36 @@ public class BuildPile extends CardPile {
 			}
 		}
 	}
+	
+	public boolean canTake(Card target){
+		return target.getFaceUp() && this.get(this.size()).getColor() != target.getColor() && this.get(this.size()).getFace() +1 == target.getFace();
+	}
+
+	
+	public void moveBuildPile(CardPile target){
+		CardPile tempPopPile = new CardPile();
+		if(this.canTake(target.peek())){
+			while(this.size() > 0){
+				tempPopPile.push(this.pop());
+			}
+			while(tempPopPile.size()>0){
+				target.push(tempPopPile.pop());
+			}
+		}
+	}
 
 //testing
-//	public static void main(String[] args) {
-//		CardPile b = new CardPile();;
-//		b.push(new Card(2, "C"));
-//		b.push(new Card(2, "H"));
-//		
-//		BuildPile bp = new BuildPile();
-//		bp.push(new Card(3,"C"));
-//		bp.push(b);
-//		bp.push(b);
-//		
-//		System.out.println(bp);
-//	}
+	public static void main(String[] args) {
+		CardPile b = new CardPile();;
+		b.push(new Card(2, "C"));
+		b.push(new Card(2, "H"));
+		
+		BuildPile bp = new BuildPile();
+		bp.push(new Card(3,"C"));
+		bp.push(b);
+		bp.push(b);
+		
+		System.out.println(bp);
+	}
 }
 

@@ -7,9 +7,6 @@ public class Klondike {
 	private ThrowPile throwPile;
 	private DrawPile drawPile;
 
-
-
-	// fix me
 	public Klondike() {
 		foundation = new FoundationPile[4];
 		for(int i = 0; i< foundation.length ; i++){
@@ -29,20 +26,21 @@ public class Klondike {
 
 	//superhax klasse deler ut alt!
 	public void dealAllCards(){
-//		for(int i = 0; i<7;i++){
-//			int counter = 0;
-//			debug();
-//			for(int j = counter; j<7;j++){
-//				this.tableau[j].push(this.drawPile.pop());
-//				counter++;
-//				debug();
-//			}
-//			Card c = this.tableau[i].pop();
-//			c.setFaceUp();
-//			this.tableau[i].push(c);
-//			System.out.println(tableau[i]);
-//		}
-		
+		//gammel kode som ikke funker
+		//		for(int i = 0; i<7;i++){
+		//			int counter = 0;
+		//			debug();
+		//			for(int j = counter; j<7;j++){
+		//				this.tableau[j].push(this.drawPile.pop());
+		//				counter++;
+		//				debug();
+		//			}
+		//			Card c = this.tableau[i].pop();
+		//			c.setFaceUp();
+		//			this.tableau[i].push(c);
+		//			System.out.println(tableau[i]);
+		//		}
+
 		int cardsToDeal = 1;
 		for (TableauPile currentTableauPile : tableau) {
 			for (int i = 0; i < cardsToDeal; i++) {
@@ -53,46 +51,34 @@ public class Klondike {
 			cardsToDeal++;
 			System.out.println(currentTableauPile);
 		}
-		
-		System.out.println("Antall kort i drawpile nå: " + this.drawPile.size());
+
+		debug();
 	}
-
-
 
 	private void debug() {
 		System.err.println("Lengden er: " + this.drawPile.size());
 	}
 
+	public void dealThrowCards(){
+		this.throwPile.addCard(this.drawPile);
+	}
+
+	public void pushThrowCardToFoundation(FoundationPile fp){
+		if(!this.throwPile.isEmpty()){
+			if(fp.canTake(this.throwPile.peek())){
+				this.throwPile.drawCard(fp);
+			}
+		}
+	}
 	public static void main(String[] args) {
 		Klondike k = new Klondike();
 		k.dealAllCards();
-
+		k.dealThrowCards();
+		System.out.println(k.throwPile);
+	FoundationPile cp = new FoundationPile();
+		k.pushThrowCardToFoundation(cp);
+		k.pushThrowCardToFoundation(cp);
+		System.out.println(cp);
 	}
-
-
-	public CardPile getTableau(int pos) {
-		return this.tableau[pos];
-	}
-
-	public CardPile[] getTableaus() {
-		return this.tableau;
-	}
-
-	public CardPile getFoundation(int pos) {
-		return this.foundation[pos];
-	}
-
-	public CardPile[] getFoundations() {
-		return this.foundation;
-	}
-
-	public CardPile getThrowPile() {
-		return this.throwPile;
-	}
-
-	public CardPile getDrawPile() {
-		return this.drawPile;
-	}
-
 
 }

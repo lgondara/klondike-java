@@ -17,7 +17,7 @@ public class ThrowPile extends CardPile {
 	
 	public void drawCard(CardPile target){
 		target.push(this.pop());
-		System.out.println("Kort " + target.peek() + " flyttet fra ThrowPile til TableauPile");
+		System.out.println("Kort " + target.peek() + " flyttet fra ThrowPile til target");
 	}
 //	testing
 //	public static void main(String[] args) {	
