@@ -1,4 +1,4 @@
-package kristofferversjon;
+package logic;
 //throwpile er der de kortene du trekker ender
 public class ThrowPile extends CardPile {
 	

@@ -1,4 +1,4 @@
-package kristofferversjon;
+package logic;
 //drawpile er der du trekker kort 
 public class DrawPile extends CardPile {
 	private static final long serialVersionUID = 1L;

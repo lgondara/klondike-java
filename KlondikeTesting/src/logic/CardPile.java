@@ -1,4 +1,4 @@
-package kristofferversjon;
+package logic;
 
 import java.util.Stack;
 

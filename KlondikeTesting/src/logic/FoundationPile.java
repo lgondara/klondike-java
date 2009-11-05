@@ -1,4 +1,4 @@
-package kristofferversjon;
+package logic;
 
 public class FoundationPile extends CardPile {
 //foundation er der du bygger opp gjennom spillet
@@ -13,7 +13,7 @@ public class FoundationPile extends CardPile {
 			return card.getFace() == 0;
 		}	
 		else {
-			Card top = peek();
+			Card top = this.peek();
 			return (card.getSuit() == top.getSuit()) 
 					&& (card.getFace() == (top.getFace()+1));
 		}

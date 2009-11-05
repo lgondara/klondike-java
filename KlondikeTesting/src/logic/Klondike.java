@@ -1,4 +1,4 @@
-package kristofferversjon;
+package logic;
 
 public class Klondike {
 	

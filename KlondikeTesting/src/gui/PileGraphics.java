@@ -3,7 +3,7 @@ package gui;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import kristofferversjon.Card;
+import logic.Card;
 
 public class PileGraphics {
 	
