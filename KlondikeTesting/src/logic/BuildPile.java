@@ -27,7 +27,7 @@ public class BuildPile extends CardPile {
 		}
 	}
 
-	//testing
+//testing
 //	public static void main(String[] args) {
 //		CardPile b = new CardPile();;
 //		b.push(new Card(2, "C"));

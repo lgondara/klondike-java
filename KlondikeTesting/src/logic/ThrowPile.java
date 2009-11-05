@@ -1,7 +1,6 @@
 package logic;
 //throwpile er der de kortene du trekker ender
 public class ThrowPile extends CardPile {
-	
 	private static final long serialVersionUID = 1L;
 
 	public ThrowPile() {
@@ -9,23 +8,23 @@ public class ThrowPile extends CardPile {
 	}
 	
 	public void addCard(CardPile source) {
-		if(this.isEmpty()){
-			this.push(source.pop());
-		}
+		this.push(source.pop());
+		System.out.println("Kort " + this.peek() + " flyttet fra DrawPile til ThrowPile");
 	}
 	
 	public void drawCard(CardPile target){
 		target.push(this.pop());
+		System.out.println("Kort " + target.peek() + "flytter fra ThrowPile til TableauPile");
 	}
-	
-	public static void main(String[] args) {
-		
+//	testing
+	public static void main(String[] args) {	
 		DrawPile dp = new DrawPile();
 		ThrowPile tp = new ThrowPile();
-		System.out.println(tp);
-		tp.drawCard(dp);
-		System.out.println(dp);
-		System.out.println(tp);
+		TableauPile tap = new TableauPile();
+		tp.addCard(dp);
+		System.out.println("TableauPile: " + tap + " ThrowPile: " + tp + " DrawPile: " + dp);
+		tp.drawCard(tap);
+		System.out.println("TableauPile: " + tap + " ThrowPile: " + tp + " DrawPile: " + dp);
 		
 	}
 }
