@@ -12,7 +12,6 @@ public class GUI extends JFrame {
 	public GUI() {
 		window = new JFrame("Klondike");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//window.setSize(800, 600);
 		panel = new JPanel();
 		panel.setPreferredSize(new Dimension(1024, 600));
 		panel.setBackground(Color.PINK);
