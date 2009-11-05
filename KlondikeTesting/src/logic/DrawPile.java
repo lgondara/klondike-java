@@ -44,6 +44,7 @@ public class DrawPile extends CardPile {
 			for (int i = 0; i < target.size(); i++) {
 				this.push(target.get(i));
 			}
+			target.clear();
 		}
 		else {
 			target.addCard(this);

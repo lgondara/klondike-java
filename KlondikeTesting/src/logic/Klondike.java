@@ -1,5 +1,7 @@
 package logic;
 
+import java.util.Scanner;
+
 public class Klondike {
 
 	private FoundationPile[] foundation;
@@ -54,12 +56,7 @@ public class Klondike {
 				currentTableauPile.push(this.drawPile.pop());
 			}
 			currentTableauPile.get(currentTableauPile.size() - 1).setFaceUp();
-			cardsToDeal++;
-
-			//System.out.println(currentTableauPile);
-
-			System.out.print(currentTableauPile);
-			
+			cardsToDeal++;				
 		}
 
 		//debug();
@@ -114,11 +111,8 @@ public class Klondike {
 			System.out.println("ThrowPile: Empty");
 		}
 		else {
-			System.out.println("Throwpile: " + this.getThrowPile().peek().toString());
+			System.out.println("Throwpile: " + this.getThrowPile().peek().toString() + "\n\n");
 		}
-		
-		System.out.println("");
-		System.out.println("");
 		
 		for (int i = 0; i < tableau.length; i++) {
 			System.out.println(this.tableau[i].toString());
@@ -134,45 +128,26 @@ public class Klondike {
 		}
 	}
 	
-	//setter opp ett tenkt spille scenario:
-	public static void main(String[] args) {
-		System.out.println("testing 1: ");
+	public void play() {
+		String move = "";
+		Scanner scanner = new Scanner(System.in);
+		this.printTablaeu();
 		
-		Klondike k = new Klondike();
-		//spiller trykker på kortbunken og dealer ut i throwbunken:
-		//k.dealThrowCards();
-		
-		k.printTablaeu();
-		//k.dealThrowCards();
-		//System.out.println(k.throwPile);
-		//FoundationPile cp = new FoundationPile();
-		//k.pushThrowCardToFoundation(cp);
-		//k.pushThrowCardToFoundation(cp);
-		//System.out.println(cp);
-		k.dealThrowCards();
-		System.out.println(k.throwPile);
-		//spiller tar kort fra throw og legger det på en tableau:
-		k.pushThrowCardToTableau(k.tableau[0]);
-		
-		System.out.println();
-		System.out.println("testing 2: prøver å flytte en buildpile oppå en tableaupile");
-		BuildPile bp = new BuildPile();
-		Card a = new Card(5, "S");
-		a.setFaceUp();
-		Card b = new Card(4, "H");
-		b.setFaceUp();
-		bp.push(a);
-		bp.push(b);
-		System.out.println("bp: " + bp);
-		TableauPile tp = new TableauPile();
-		Card c = new Card(6, "H");
-		c.setFaceUp();
-		tp.push(c);
-		System.out.println("tp: " + tp);
-		bp.moveBuildPile(tp);
-		System.out.println("tp: " + tp);
-		System.out.println("bp: " +bp);
-		
+		move = scanner.nextLine();
+		while (!move.equals("done")) {
+			move = scanner.nextLine();
+			if (move.equals("D")) {
+				this.drawPile.drawCard(this.throwPile);
+				System.out.println("Kort igjen: " + this.getDrawPile().size());
+			}
+			this.printTablaeu();
+		}
+		scanner.close();
+	}
+	
+	public static void main(String[] args) {		
+		Klondike k = new Klondike();		
+		k.play();
 	}
 	
 	
