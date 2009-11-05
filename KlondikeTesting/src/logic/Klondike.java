@@ -24,36 +24,49 @@ public class Klondike {
 	}
 
 	public boolean solved() {
-		for (int i = 0; i < foundation.length; i++) {
-			if (foundation[i].solved()) {
-				return true;
-			}
-		}
-		return false;
-	}	
+		return this.foundation[0].solved() && this.foundation[1].solved() && this.foundation[2].solved() && this.foundation[3].solved();
+	}
 
 	//superhax klasse deler ut alt!
 	public void dealAllCards(){
-		for(int i = 0; i<7;i++){
-			int counter = 0;
-			for(int j = counter; j<7;j++){
-				this.tableau[j].push(this.drawPile.pop());
-				counter++;
+//		for(int i = 0; i<7;i++){
+//			int counter = 0;
+//			debug();
+//			for(int j = counter; j<7;j++){
+//				this.tableau[j].push(this.drawPile.pop());
+//				counter++;
+//				debug();
+//			}
+//			Card c = this.tableau[i].pop();
+//			c.setFaceUp();
+//			this.tableau[i].push(c);
+//			System.out.println(tableau[i]);
+//		}
+		
+		int cardsToDeal = 1;
+		for (TableauPile currentTableauPile : tableau) {
+			for (int i = 0; i < cardsToDeal; i++) {
+				System.out.println(this.drawPile.size());
+				currentTableauPile.push(this.drawPile.pop());
 			}
-			Card c = this.tableau[i].pop();
-			c.setFaceUp();
-			this.tableau[i].push(c);
-			System.out.println(tableau[i]);
+			currentTableauPile.get(currentTableauPile.size() - 1).setFaceUp();
+			cardsToDeal++;
+			System.out.println(currentTableauPile);
 		}
-		System.out.println("Antall kort i drawpile nå: " + this.drawPile.size()+ "       WTF?!!!!!!!!");
+		
+		System.out.println("Antall kort i drawpile nå: " + this.drawPile.size());
 	}
 
 
 
+	private void debug() {
+		System.err.println("Lengden er: " + this.drawPile.size());
+	}
+
 	public static void main(String[] args) {
 		Klondike k = new Klondike();
 		k.dealAllCards();
-		
+
 	}
 
 

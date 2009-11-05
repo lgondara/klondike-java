@@ -2,9 +2,6 @@ package logic;
 
 public class TableauPile extends CardPile {
 //tableaupile er de 7 bunkene
-	public TableauPile() {
-		
-	}
 	
 	public boolean canTake(Card card) {
 		if(isEmpty()) {

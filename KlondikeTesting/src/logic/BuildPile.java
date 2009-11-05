@@ -1,5 +1,5 @@
 package logic;
-
+//pile med annet vært kort svart og rødt
 public class BuildPile extends CardPile {
 	private static final long serialVersionUID = 1L;
 
