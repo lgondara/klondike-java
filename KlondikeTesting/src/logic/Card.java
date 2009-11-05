@@ -8,9 +8,6 @@ public class Card {
 	public String suit;
 	private boolean faceUp;
 	private String color;
-	private int X;
-	private int Y;
-	private Image img = null;
 	
 	public Card(int face, String suit) {
 		this.suit = suit;
@@ -49,29 +46,5 @@ public class Card {
 	
 	public String toString() {
 		return suit+face+faceUp;
-	}
-
-	public void setX(int x) {
-		this.X = x;
-	}
-
-	public int getX() {
-		return this.X;
-	}
-
-	public void setY(int y) {
-		this.Y = y;
-	}
-
-	public int getY() {
-		return this.Y;
-	}
-
-	public void setImg(Image img) {
-		this.img = img;
-	}
-
-	public Image getImg() {
-		return img;
 	}
 }

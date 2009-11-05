@@ -1,8 +1,7 @@
 package logic;
 //throwpile er der de kortene du trekker ender
 public class ThrowPile extends CardPile {
-	private static final long serialVersionUID = 1L;
-
+	
 	public ThrowPile() {
 		super();
 	}

@@ -1,7 +1,7 @@
 package logic;
+
 //drawpile er der du trekker kort 
 public class DrawPile extends CardPile {
-	private static final long serialVersionUID = 1L;
 
 	//bygger en kortstokk
 	public DrawPile(){
@@ -39,26 +39,6 @@ public class DrawPile extends CardPile {
 		}
 	}
 
-	//evt lage egen del ut metode
-	/** int z; //antall kort som er tatt ut av bunken
-	public Card[] deal(int x){
-
-		Card[] hand = new Card [x];
-		if (z+x>52){
-			Card[] tom = new Card[0];
-			return tom;
-		}
-		Card[] cards = new Card[x];
-		for (int i=0; i<hand.length;i++){	
-			cards[i] = this.getCard(this.z);
-			z++;
-		}
-
-		return cards;
-
-	}			
-	**/
-	
 	public void drawCard(ThrowPile target) {
 		if(this.isEmpty()) {
 			for (int i = 0; i < target.size(); i++) {
@@ -69,10 +49,4 @@ public class DrawPile extends CardPile {
 			target.push(this.pop());
 		}
 	}
-
-//testing
-//	public static void main(String[] args) {
-//		DrawPile dp = new DrawPile();	
-//	}
-
 }

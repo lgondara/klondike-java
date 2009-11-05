@@ -30,7 +30,6 @@ public class FoundationPile extends CardPile {
 
 	}
 
-	//FIX
 	public boolean solved() {
 		return this.peek().getFace() == 12;
 	}
