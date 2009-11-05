@@ -30,8 +30,14 @@ public class BuildPile extends CardPile {
 		}
 	}
 	
+	//testen som tar bunnen av en buildpile(this) og sjekker om den passer oppå target
 	public boolean canTake(Card target){
 		return target.getFaceUp() && this.get(this.size()).getColor() != target.getColor() && this.get(this.size()).getFace() +1 == target.getFace();
+	}
+	
+	//target er den pilen du vil flytte en buildpile(this) til. i er hvor i buildpilen(this) du vil flytte.
+	public boolean canTake(Card target, int i){
+		return target.getFaceUp() && this.get(i).getColor() != target.getColor() && this.get(i).getFace() +1 == target.getFace();
 	}
 
 	
