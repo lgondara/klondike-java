@@ -8,7 +8,9 @@ public class ThrowPile extends CardPile {
 	}
 	
 	public void addCard(CardPile source) {
-		this.push(source.pop());
+		Card c = source.pop();
+		c.setFaceUp();
+		this.push(c);
 		System.out.println("Kort " + this.peek() + " flyttet fra DrawPile til ThrowPile");
 		
 	}

@@ -48,7 +48,7 @@ public class Card {
 	}
 	
 	public String toString() {
-		return suit+face;
+		return suit+face+faceUp;
 	}
 
 	public void setX(int x) {

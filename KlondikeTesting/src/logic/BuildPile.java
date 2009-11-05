@@ -14,7 +14,9 @@ public class BuildPile extends CardPile {
 				//sjekker om riktig nummer
 				if(this.peek().getFace()-1 == source.peek().getFace()){
 					//hvis alt er ok kan man legge til kortet
-					this.push(source.pop());
+					Card c = source.pop();
+					c.setFaceUp();
+					this.push(c);
 				}
 				else{
 					System.out.println("Feil nummer");
