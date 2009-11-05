@@ -10,7 +10,7 @@ public class ThrowPile extends CardPile {
 		Card c = source.pop();
 		c.setFaceUp();
 		this.push(c);
-		System.out.println("Kort " + this.peek() + " flyttet fra DrawPile til ThrowPile");
+		//System.out.println("Kort " + this.peek() + " flyttet fra DrawPile til ThrowPile");
 		
 	}
 	

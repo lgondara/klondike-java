@@ -34,6 +34,7 @@ public class GUI extends JFrame {
 	}
 	
 	public void fett(Klondike klondike) {
+		klondike.dealAllCards();
 		text.setText(klondike.getDrawPile().peek().toString() + "\n" +
 					 klondike.getThrowPile().peek().toString()
 					 );

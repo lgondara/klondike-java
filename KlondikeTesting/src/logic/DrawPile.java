@@ -22,8 +22,8 @@ public class DrawPile extends CardPile {
 			}
 		}	
 		this.shuffle();
-		System.out.println("Lagde ny kortstokk" + this);
-		System.out.println("Størrelse: "+ this.size());
+		//System.out.println("Lagde ny kortstokk" + this);
+		//System.out.println("Størrelse: "+ this.size());
 		
 	}
 	
@@ -46,7 +46,7 @@ public class DrawPile extends CardPile {
 			}
 		}
 		else {
-			target.push(this.pop());
+			target.addCard(this);
 		}
 	}
 }

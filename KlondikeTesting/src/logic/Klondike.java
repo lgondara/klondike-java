@@ -30,7 +30,6 @@ public class Klondike {
 	public boolean solved() {
 		return this.foundation[0].solved() && this.foundation[1].solved() && this.foundation[2].solved() && this.foundation[3].solved();
 	}
-
 	//superhax klasse deler ut alt!
 	public void dealAllCards(){
 		//gammel kode som ikke funker
@@ -56,14 +55,27 @@ public class Klondike {
 			}
 			currentTableauPile.get(currentTableauPile.size() - 1).setFaceUp();
 			cardsToDeal++;
+
+			//System.out.println(currentTableauPile);
+
 			System.out.print(currentTableauPile);
 			
 		}
+
+		//debug();
 		System.out.println("Ferdig med å dele ut ut");
 	}
 
 	private void debug() {
 		System.err.println("Lengden er: " + this.drawPile.size());
+	}
+	
+	public DrawPile getDrawPile() {
+		return this.drawPile;
+	}
+	
+	public ThrowPile getThrowPile() {
+		return this.throwPile;
 	}
 
 	public void dealThrowCards(){
@@ -77,6 +89,9 @@ public class Klondike {
 			}
 		}
 	}
+	
+	
+	
 	
 	public void pushThrowCardToTableau(TableauPile tp){
 		if(!this.throwPile.isEmpty()){
@@ -92,6 +107,15 @@ public class Klondike {
 		
 		Klondike k = new Klondike();
 		//spiller trykker på kortbunken og dealer ut i throwbunken:
+		//k.dealThrowCards();
+		
+		k.printTablaeu();
+		//k.dealThrowCards();
+		//System.out.println(k.throwPile);
+		//FoundationPile cp = new FoundationPile();
+		//k.pushThrowCardToFoundation(cp);
+		//k.pushThrowCardToFoundation(cp);
+		//System.out.println(cp);
 		k.dealThrowCards();
 		System.out.println(k.throwPile);
 		//spiller tar kort fra throw og legger det på en tableau:

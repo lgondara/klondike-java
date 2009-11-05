@@ -45,6 +45,11 @@ public class Card {
 	}
 	
 	public String toString() {
-		return suit+face+faceUp;
+		if(getFaceUp()) {
+			return suit+face;
+		}
+		else {
+			return "Card";
+		}
 	}
 }
