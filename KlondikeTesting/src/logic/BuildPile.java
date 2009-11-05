@@ -6,28 +6,39 @@ public class BuildPile extends CardPile {
 	public BuildPile(){
 		super();
 	}
-	
+//denne har egen metode for push siden det kreves spesielle regler her
 	public void push(CardPile source){
 		if(!this.isEmpty()){
+			//sjekker om riktig farge
 			if(this.peek().getColor() != source.peek().getColor()){
-				this.push(source.pop());
+				//sjekker om riktig nummer
+				if(this.peek().getFace()-1 == source.peek().getFace()){
+					//hvis alt er ok kan man legge til kortet
+					this.push(source.pop());
+				}
+				else{
+					System.out.println("Feil nummer");
+				}
 			}
 			else{
 				System.out.println("Feil farge");
-				
+
 			}
 		}
 	}
-	
+
 	//testing
-	public static void main(String[] args) {
-		CardPile b = new CardPie();
-		p.push(1, "")
-		BuildPile bp = new BuildPile();
-		bp.push(new Card(1,"D"));
-		while(enBunke.size()>0){
-		bp.push(enBunke);
-		System.out.println(bp);
-		}
-	}
+//	public static void main(String[] args) {
+//		CardPile b = new CardPile();;
+//		b.push(new Card(2, "C"));
+//		b.push(new Card(2, "H"));
+//		
+//		BuildPile bp = new BuildPile();
+//		bp.push(new Card(3,"C"));
+//		bp.push(b);
+//		bp.push(b);
+//		
+//		System.out.println(bp);
+//	}
 }
+

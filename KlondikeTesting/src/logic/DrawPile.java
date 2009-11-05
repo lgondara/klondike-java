@@ -70,8 +70,8 @@ public class DrawPile extends CardPile {
 	}
 
 //testing
-	public static void main(String[] args) {
-		DrawPile dp = new DrawPile();	
-	}
+//	public static void main(String[] args) {
+//		DrawPile dp = new DrawPile();	
+//	}
 
 }
