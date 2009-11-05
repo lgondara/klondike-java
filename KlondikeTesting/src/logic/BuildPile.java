@@ -29,16 +29,16 @@ public class BuildPile extends CardPile {
 			}
 		}
 	}
-	
-	//testen som tar bunnen av en buildpile(this) og sjekker om den passer oppå target
-	public boolean canTake(Card target){
-		return target.getFaceUp() && this.get(this.size()).getColor() != target.getColor() && this.get(this.size()).getFace() +1 == target.getFace();
-	}
-	
-	//target er den pilen du vil flytte en buildpile(this) til. i er hvor i buildpilen(this) du vil flytte.
-	public boolean canTake(Card target, int i){
-		return target.getFaceUp() && this.get(i).getColor() != target.getColor() && this.get(i).getFace() +1 == target.getFace();
-	}
+	//bruker metodene for slik testing i tableaupile heller
+//	//testen tar bunnen av en buildpile(this) og sjekker om den passer oppå target
+//	public boolean canTake(Card target){
+//		return target.getFaceUp() && this.get(this.size()).getColor() != target.getColor() && this.get(this.size()).getFace() +1 == target.getFace();
+//	}
+//	
+//	//target er den pilen du vil flytte en buildpile(this) til. i er hvor i buildpilen(this) du vil flytte.
+//	public boolean canTake(Card target, int i){
+//		return target.getFaceUp() && this.get(i).getColor() != target.getColor() && this.get(i).getFace() +1 == target.getFace();
+//	}
 
 	
 	public void moveBuildPile(CardPile target){
@@ -54,17 +54,17 @@ public class BuildPile extends CardPile {
 	}
 
 //testing
-	public static void main(String[] args) {
-		CardPile b = new CardPile();;
-		b.push(new Card(2, "C"));
-		b.push(new Card(2, "H"));
-		
-		BuildPile bp = new BuildPile();
-		bp.push(new Card(3,"C"));
-		bp.push(b);
-		bp.push(b);
-		
-		System.out.println(bp);
-	}
+//	public static void main(String[] args) {
+//		CardPile b = new CardPile();;
+//		b.push(new Card(2, "C"));
+//		b.push(new Card(2, "H"));
+//		
+//		BuildPile bp = new BuildPile();
+//		bp.push(new Card(3,"C"));
+//		bp.push(b);
+//		bp.push(b);
+//		
+//		System.out.println(bp);
+//	}
 }
 

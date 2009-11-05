@@ -4,6 +4,7 @@ public class Klondike {
 
 	private FoundationPile[] foundation;
 	private TableauPile[] tableau;
+	private BuildPile[] buildPile;
 	private ThrowPile throwPile;
 	private DrawPile drawPile;
 
@@ -16,8 +17,14 @@ public class Klondike {
 		for (int i = 0; i < tableau.length; i++) {
 			tableau[i] = new TableauPile();
 		}
+		buildPile = new BuildPile[7];
+		for (int i = 0; i < buildPile.length; i++) {
+			buildPile[i] = new BuildPile();
+		}
 		throwPile = new ThrowPile();
 		drawPile = new DrawPile();
+		
+		this.dealAllCards();
 	}
 
 	public boolean solved() {
@@ -44,15 +51,15 @@ public class Klondike {
 		int cardsToDeal = 1;
 		for (TableauPile currentTableauPile : tableau) {
 			for (int i = 0; i < cardsToDeal; i++) {
-				System.out.println(this.drawPile.size());
+				//System.out.println(this.drawPile.size());
 				currentTableauPile.push(this.drawPile.pop());
 			}
 			currentTableauPile.get(currentTableauPile.size() - 1).setFaceUp();
 			cardsToDeal++;
-			System.out.println(currentTableauPile);
+			System.out.print(currentTableauPile);
+			
 		}
-
-		debug();
+		System.out.println("Ferdig med å dele ut ut");
 	}
 
 	private void debug() {
@@ -70,15 +77,47 @@ public class Klondike {
 			}
 		}
 	}
+	
+	public void pushThrowCardToTableau(TableauPile tp){
+		if(!this.throwPile.isEmpty()){
+			if(tp.canTake(this.throwPile.peek())){
+				this.throwPile.drawCard(tp);
+			}
+		}
+	}
+	
+	//setter opp ett tenkt spille scenario:
 	public static void main(String[] args) {
+		System.out.println("testing 1: ");
+		
 		Klondike k = new Klondike();
-		k.dealAllCards();
+		//spiller trykker på kortbunken og dealer ut i throwbunken:
 		k.dealThrowCards();
 		System.out.println(k.throwPile);
-	FoundationPile cp = new FoundationPile();
-		k.pushThrowCardToFoundation(cp);
-		k.pushThrowCardToFoundation(cp);
-		System.out.println(cp);
+		//spiller tar kort fra throw og legger det på en tableau:
+		k.pushThrowCardToTableau(k.tableau[0]);
+		
+		System.out.println();
+		System.out.println("testing 2: prøver å flytte en buildpile oppå en tableaupile");
+		BuildPile bp = new BuildPile();
+		Card a = new Card(5, "S");
+		a.setFaceUp();
+		Card b = new Card(4, "H");
+		b.setFaceUp();
+		bp.push(a);
+		bp.push(b);
+		System.out.println("bp: " + bp);
+		TableauPile tp = new TableauPile();
+		Card c = new Card(6, "H");
+		c.setFaceUp();
+		tp.push(c);
+		System.out.println("tp: " + tp);
+		bp.moveBuildPile(tp);
+		System.out.println("tp: " + tp);
+		System.out.println("bp: " +bp);
+		
 	}
+	
+	
 
 }
