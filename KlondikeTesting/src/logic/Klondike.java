@@ -4,11 +4,9 @@ import java.util.Scanner;
 
 public class Klondike {
 
-	
 	private FoundationPile[] foundation;
-	
 	private TableauPile[] tableau;
-	private BuildPile[] buildPile;
+	private BuildPile buildPile;
 	private ThrowPile throwPile;
 	private DrawPile drawPile;
 
@@ -16,18 +14,18 @@ public class Klondike {
 	 * Konstruktør som lager de forskjellige bunkene og starter utdeling av kort
 	 */
 	public Klondike() {
+		
 		foundation = new FoundationPile[4];
 		for(int i = 0; i< foundation.length ; i++){
 			foundation[i] = new FoundationPile();
 		}
+		
 		tableau = new TableauPile[7];
 		for (int i = 0; i < tableau.length; i++) {
 			tableau[i] = new TableauPile();
 		}
-		buildPile = new BuildPile[7];
-		for (int i = 0; i < buildPile.length; i++) {
-			buildPile[i] = new BuildPile();
-		}
+		
+		buildPile = new BuildPile();
 		throwPile = new ThrowPile();
 		drawPile = new DrawPile();
 		
@@ -46,7 +44,7 @@ public class Klondike {
 	 * Metode som deler ut kort til Tablåbunkene
 	 */
 	public void dealAllCards(){
-		//gammel kode som ikke funker
+		//gammel kode som ikke funker, sånn man egentlig skal dele ut
 		//		for(int i = 0; i<7;i++){
 		//			int counter = 0;
 		//			debug();
@@ -70,15 +68,8 @@ public class Klondike {
 			currentTableauPile.get(currentTableauPile.size() - 1).setFaceUp();
 			cardsToDeal++;				
 		}
-
-		//debug();
-		//System.out.println("Ferdig med å dele ut ut");
 	}
 
-	//private void debug() {
-	//	System.err.println("Lengden er: " + this.drawPile.size());
-	//}
-	
 	public DrawPile getDrawPile() {
 		return this.drawPile;
 	}
@@ -86,40 +77,11 @@ public class Klondike {
 	public ThrowPile getThrowPile() {
 		return this.throwPile;
 	}
-
-	/*
-	public void dealThrowCards(){
-		this.throwPile.addCard(this.drawPile);
-	}
-	
-	public void moveFromOnePileToTheAnother(int onePile, int anotherPile){
-		//litt oversikt bare:
-//		BuildPile onePileBuildPile = this.buildPile[onePile];
-//		BuildPile anotherPileBuildPile = this.buildPile[anotherPile];
-//		TableauPile onePileTableauPile = this.tableau[anotherPile];
-//		TableauPile anotherPileTableauPile = this.tableau[anotherPile];
-		
-		if(this.buildPile[onePile].size() == 0){
-			Card temp = this.tableau[onePile].pop();
-			temp.setFaceUp();
-			this.buildPile[onePile].push(temp);
-		}
-		
-	}
-
-	public void pushThrowCardToFoundation(FoundationPile fp){
-		if(!this.throwPile.isEmpty()){
-			if(fp.canTake(this.throwPile.peek())){
-				this.throwPile.drawCard(fp);
-			}
-		}
-	}
-	*/
 	
 	/**
 	 * Metode for å skrive ut brettet
 	 */
-	public void printTablaeu() {
+	public void printGame() {
 		if(this.drawPile.isEmpty()) {
 			System.out.println("D: Empty");
 		}
@@ -141,7 +103,7 @@ public class Klondike {
 			}
 			else {
 				System.out.print("F" + i + ": ");
-				System.out.print(this.foundation[i].peek().toString());
+				System.out.print(this.foundation[i].peek().toString() + "\t");
 			}
 		}
 		System.out.println("\n");
@@ -156,23 +118,13 @@ public class Klondike {
 		}
 	}
 	
-	/*
-	public void pushThrowCardToTableau(TableauPile tp){
-		if(!this.throwPile.isEmpty()){
-			if(tp.canTake(this.throwPile.peek())){
-				this.throwPile.drawCard(tp);
-			}
-		}
-	}
-	*/
-	
 	/**
 	 * Metode som følger med på trekk og oppdaterer spillet
 	 */
 	public void play() {
 		String move = "";
 		Scanner scanner = new Scanner(System.in);
-		this.printTablaeu();
+		this.printGame();
 		while (!move.equals("done") || this.solved()) {
 			move = scanner.nextLine();
 			
@@ -209,13 +161,22 @@ public class Klondike {
 				this.tableau[Integer.parseInt(move.substring(2))].drawCard(this.throwPile);
 			}
 			
-			//Ikke testet
+			//Flytte fra Fundamentet til Tablået
 			else if (move.matches("^F[0-3]L[0-6]$")) {
-				this.tableau[Integer.parseInt(move.substring(1, 2))]
-				             .drawCard(this.foundation[Integer.parseInt(move.substring(3))]);
+				this.tableau[Integer.parseInt(move.substring(3))]
+				             .drawCard(this.foundation[Integer.parseInt(move.substring(1,2))]);
 			}
 			
-			this.printTablaeu();
+			// Flytte bygg fra Tablå til Tablå
+			else if (move.matches("^L[0-6]L[0-6]B$")) {
+				this.tableau[Integer.parseInt(move.substring(3,4))]
+				             .drawBuild(this.tableau[Integer.parseInt(move.substring(1,2))], this.buildPile);
+				if (!this.tableau[Integer.parseInt(move.substring(1,2))].isEmpty()) {
+					this.tableau[Integer.parseInt(move.substring(1,2))].peek().setFaceUp();
+				}
+			}
+			
+			this.printGame();
 		}
 		System.out.println("Enten vant du eller så ga du opp, gratulerer!");
 		scanner.close();
@@ -224,5 +185,6 @@ public class Klondike {
 	public static void main(String[] args) {		
 		Klondike k = new Klondike();		
 		k.play();
+
 	}
 }
