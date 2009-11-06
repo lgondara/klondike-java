@@ -18,10 +18,10 @@ public class TableauPile extends CardPile {
 		return false;
 	}
 	
-	public void drawCard(CardPile cardPile) {
-		
+	public void drawCard(CardPile cardPile) {	
 		if (canTake(this.peek())) {
-			cardPile.addCard(this.pop());
+			cardPile.push(this.pop());
+			this.peek().setFaceUp();
 		}
 	}
 	

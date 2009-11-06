@@ -136,10 +136,11 @@ public class Klondike {
 			move = scanner.nextLine();
 			if (move.equals("D")) {
 				this.drawPile.drawCard(this.throwPile);
-				System.out.println("Kort igjen: " + this.getDrawPile().size());
+				//System.out.println("Kort igjen: " + this.getDrawPile().size());
 			}
-			else if (move.matches("^L[0-7]L[0-7]")) {
-				this.tableau[Integer.parseInt(move.substring(1, 2))].drawCard(this.tableau[Integer.parseInt(move.substring(3))]);
+			else if (move.substring(0, 1).equals("L") && move.substring(3).equals("L")) {
+				this.tableau[Integer.parseInt(move.substring(1, 2))]
+				             .drawCard(this.tableau[Integer.parseInt(move.substring(3))]);
 			}
 			this.printTablaeu();
 		}
