@@ -46,7 +46,7 @@ public class Card {
 	
 	public String toString() {
 		if(getFaceUp()) {
-			return suit+face;
+			return suit+(face+1);
 		}
 		else {
 			return "Card";

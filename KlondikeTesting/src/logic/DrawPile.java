@@ -1,9 +1,16 @@
 package logic;
 
-//drawpile er der du trekker kort 
+/** Klasse for Trekkbunke
+ * 
+ * 
+ *
+ */
 public class DrawPile extends CardPile {
 
-	//bygger en kortstokk
+	/**
+	 * Konstruktør som bygger en kortstokk på 52 kort for å så stokke den.
+	 * Setter også hvert kort med face ned.
+	 */
 	public DrawPile(){
 		for (int i=0;i<4;i++){
 			for (int j=0;j<13;j++){
@@ -27,7 +34,9 @@ public class DrawPile extends CardPile {
 		
 	}
 	
-
+	/** Metode for å stokke en kortstokk på 52 kort.
+	 * 
+	 */
 	public void shuffle(){
 		Card temp;
 		for (int i = 0;i<1000;i++){
@@ -38,13 +47,18 @@ public class DrawPile extends CardPile {
 			this.set(num2, temp);
 		}
 	}
-
+	
+	/** Metode for å trekke et kort fra trekkbunken og legge den i Kastebunken. 
+	 *  Er Trekkbunken tom flyttes kortene i Kastebunken over til Trekkbunken.
+	 * 
+	 * @param target
+	 */
 	public void drawCard(ThrowPile target) {
 		if(this.isEmpty()) {
-			for (int i = 0; i < target.size(); i++) {
-				this.push(target.get(i));
+			while (target.size()>0) {
+				target.peek().setFaceDown();
+				this.push(target.pop());
 			}
-			target.clear();
 		}
 		else {
 			target.addCard(this);

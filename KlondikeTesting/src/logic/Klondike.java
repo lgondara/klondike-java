@@ -133,12 +133,14 @@ public class Klondike {
 		Scanner scanner = new Scanner(System.in);
 		this.printTablaeu();
 		
-		move = scanner.nextLine();
 		while (!move.equals("done")) {
 			move = scanner.nextLine();
 			if (move.equals("D")) {
 				this.drawPile.drawCard(this.throwPile);
 				System.out.println("Kort igjen: " + this.getDrawPile().size());
+			}
+			else if () {
+				
 			}
 			this.printTablaeu();
 		}
