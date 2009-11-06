@@ -6,20 +6,12 @@ public class BuildPile extends CardPile {
 	public BuildPile(){
 		super();
 	}
-	
-//	public void push(TableauPile source, int cardMoveFrom){
-//		if(source.canTake(this.get(cardMoveFrom))){
-//			Card c = source.pop();
-//			c.setFaceUp();
-//			this.push(c);
-//		}
-//	}
 
-	public BuildPile moveBuildPile(TableauPile target, int fromIndex){
+	public BuildPile moveBuildPile(TableauPile target){
 		CardPile tempPopPile = new CardPile();
 		BuildPile returnPile = new BuildPile();
 		
-		if(target.canTake(this.get(fromIndex))){
+		if(target.canTake(this.get(0))){
 			while(this.size() > 0){
 				tempPopPile.push(this.pop());
 			}
@@ -50,12 +42,8 @@ public class BuildPile extends CardPile {
 			
 			tp.push(c);
 			System.out.println(tp);
-			BuildPile returnbp = bp.moveBuildPile(tp, 0);
-			System.out.println(returnbp);
-			System.out.println(returnbp.peek());
-			
-
-			
+			BuildPile returnbp = bp.moveBuildPile(tp);
+			System.out.println(returnbp);	
 		
 		}
 }
