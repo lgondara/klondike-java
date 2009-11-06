@@ -3,6 +3,11 @@ package logic;
 import java.awt.Color;
 import java.awt.Image;
 
+/**
+ * 
+ * Klasse for å lage et Kort
+ *
+ */
 public class Card {
 
 	public int face;
@@ -47,7 +52,21 @@ public class Card {
 	
 	public String toString() {
 		if(getFaceUp()) {
-			return suit+(face+1);
+			if (getFace() == 12) {
+				return suit +"K";
+			}
+			else if (getFace() == 11) {
+				return suit +"Q";
+			}
+			else if (getFace() == 10) {
+				return suit +"J";
+			}
+			else if (getFace() == 0) {
+				return suit +"A";
+			}
+			else {
+				return suit+(face+1);
+			}
 		}
 		else {
 			return "Card";
