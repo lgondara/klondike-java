@@ -88,34 +88,34 @@ public class Klondike {
 	}
 	
 	public void printTablaeu() {
-		for (int i = 0; i < foundation.length; i++) {
-			if (this.foundation[i].isEmpty()) {
-				System.out.print("Empty\t");
-			}
-			else {
-				System.out.print(this.foundation[i].peek().toString());
-			}
-		}
-		
-		System.out.println("");
-		System.out.println("");
-		
 		if(this.drawPile.isEmpty()) {
-			System.out.println("Drawpile: Empty");
+			System.out.println("D: Empty");
 		}
 		else {
-			System.out.println("Drawpile: " + this.getDrawPile().peek().toString());
+			System.out.println("D: " + this.getDrawPile().peek().toString());
 		}
 		
 		if (this.throwPile.isEmpty()) {
-			System.out.println("ThrowPile: Empty");
+			System.out.println("T: Empty\n");
 		}
 		else {
-			System.out.println("Throwpile: " + this.getThrowPile().peek().toString() + "\n\n");
+			System.out.println("T: " + this.getThrowPile().peek().toString() + "\n");
 		}
+
+		for (int i = 0; i < foundation.length; i++) {
+			if (this.foundation[i].isEmpty()) {
+				System.out.print("F" + i + ": ");
+				System.out.print("Empty\t");
+			}
+			else {
+				System.out.print("F" + i + ": ");
+				System.out.print(this.foundation[i].peek().toString());
+			}
+		}
+		System.out.println("\n");
 		
 		for (int i = 0; i < tableau.length; i++) {
-			System.out.println(this.tableau[i].toString());
+			System.out.println("L" + i + ":  " + this.tableau[i].toString());
 		}
 	}
 	
@@ -132,16 +132,15 @@ public class Klondike {
 		String move = "";
 		Scanner scanner = new Scanner(System.in);
 		this.printTablaeu();
-		
 		while (!move.equals("done")) {
 			move = scanner.nextLine();
 			if (move.equals("D")) {
 				this.drawPile.drawCard(this.throwPile);
 				System.out.println("Kort igjen: " + this.getDrawPile().size());
 			}
-			else if () {
+			//else if () {
 				
-			}
+			//}
 			this.printTablaeu();
 		}
 		scanner.close();
