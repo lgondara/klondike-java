@@ -7,64 +7,55 @@ public class BuildPile extends CardPile {
 		super();
 	}
 	
-//denne har egen metode for push siden det kreves spesielle regler her
-	public void push(CardPile source){
-		if(!this.isEmpty()){
-			//sjekker om riktig farge
-			if(this.peek().getColor() != source.peek().getColor()){
-				//sjekker om riktig nummer
-				if(this.peek().getFace()-1 == source.peek().getFace()){
-					//hvis alt er ok kan man legge til kortet
-					Card c = source.pop();
-					c.setFaceUp();
-					this.push(c);
-				}
-				else{
-					System.out.println("Feil nummer");
-				}
-			}
-			else{
-				System.out.println("Feil farge");
-
-			}
-		}
-	}
-	//bruker metodene for slik testing i tableaupile heller
-//	//testen tar bunnen av en buildpile(this) og sjekker om den passer oppå target
-//	public boolean canTake(Card target){
-//		return target.getFaceUp() && this.get(this.size()).getColor() != target.getColor() && this.get(this.size()).getFace() +1 == target.getFace();
-//	}
-//	
-//	//target er den pilen du vil flytte en buildpile(this) til. i er hvor i buildpilen(this) du vil flytte.
-//	public boolean canTake(Card target, int i){
-//		return target.getFaceUp() && this.get(i).getColor() != target.getColor() && this.get(i).getFace() +1 == target.getFace();
+//	public void push(TableauPile source, int cardMoveFrom){
+//		if(source.canTake(this.get(cardMoveFrom))){
+//			Card c = source.pop();
+//			c.setFaceUp();
+//			this.push(c);
+//		}
 //	}
 
-	
-	public void moveBuildPile(CardPile target){
+	public BuildPile moveBuildPile(TableauPile target, int i){
 		CardPile tempPopPile = new CardPile();
-		if(this.canTake(target.peek())){
+		BuildPile returnPile = new BuildPile();
+		
+		if(target.canTake(this.get(i))){
 			while(this.size() > 0){
 				tempPopPile.push(this.pop());
 			}
+			returnPile.push(target.pop());
 			while(tempPopPile.size()>0){
-				target.push(tempPopPile.pop());
+				returnPile.push(tempPopPile.pop());
 			}
+			return returnPile;
 		}
+		return null;
 	}
 
-//testing
-//	public static void main(String[] args) {
-//		CardPile b = new CardPile();;
-//		b.push(new Card(2, "C"));
-//		b.push(new Card(2, "H"));
-//		
-//		BuildPile bp = new BuildPile();
-//		bp.push(new Card(3,"C"));
-//		bp.push(b);
-//		bp.push(b);
-//		
-//		System.out.println(bp);
-//	}
+//	testing
+		public static void main(String[] args) {
+			Card a = new Card(3, "C");
+			a.setFaceUp();
+			Card b = new Card(2, "H");
+			b.setFaceUp();
+			Card c = new Card(4, "C");
+			c.setFaceUp();
+			
+			BuildPile bp = new BuildPile();;
+			bp.push(b);
+			bp.push(a);
+			
+			System.out.println(bp);
+			TableauPile tp = new TableauPile();
+			
+			tp.push(c);
+			System.out.println(tp);
+			BuildPile returnbp = bp.moveBuildPile(tp, 1);
+			System.out.println(returnbp);
+			
+
+			
+		
+		}
 }
 
