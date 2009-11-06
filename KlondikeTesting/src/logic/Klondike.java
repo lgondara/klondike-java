@@ -158,7 +158,8 @@ public class Klondike {
 				             .drawCard(this.tableau[Integer.parseInt(move.substring(3))]);
 			}
 			else if (move.matches("^L[0-6]F[0-3]$")) {
-				
+				this.foundation[Integer.parseInt(move.substring(3))]
+				                .addCard(this.tableau[Integer.parseInt(move.substring(1, 2))].peek());
 			}
 			else if (move.matches("^TF[0-3]$")) {
 				
