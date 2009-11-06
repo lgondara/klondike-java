@@ -138,9 +138,9 @@ public class Klondike {
 				this.drawPile.drawCard(this.throwPile);
 				System.out.println("Kort igjen: " + this.getDrawPile().size());
 			}
-			//else if () {
-				
-			//}
+			else if (move.matches("^L[0-7]L[0-7]")) {
+				this.tableau[Integer.parseInt(move.substring(1, 2))].drawCard(this.tableau[Integer.parseInt(move.substring(3))]);
+			}
 			this.printTablaeu();
 		}
 		scanner.close();
