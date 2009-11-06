@@ -117,7 +117,7 @@ public class Klondike {
 	/**
 	 * Metode for å skrive ut brettet
 	 */
-	public void printTablaeu() {
+	public void printGame() {
 		if(this.drawPile.isEmpty()) {
 			System.out.println("D: Empty");
 		}
@@ -139,7 +139,7 @@ public class Klondike {
 			}
 			else {
 				System.out.print("F" + i + ": ");
-				System.out.print(this.foundation[i].peek().toString());
+				System.out.print(this.foundation[i].peek().toString() + "\t");
 			}
 		}
 		System.out.println("\n");
@@ -170,7 +170,7 @@ public class Klondike {
 	public void play() {
 		String move = "";
 		Scanner scanner = new Scanner(System.in);
-		this.printTablaeu();
+		this.printGame();
 		while (!move.equals("done") || this.solved()) {
 			move = scanner.nextLine();
 			
@@ -207,13 +207,22 @@ public class Klondike {
 				this.tableau[Integer.parseInt(move.substring(2))].drawCard(this.throwPile);
 			}
 			
-			//Ikke testet
+			//Flytte fra Fundamentet til Tablået
 			else if (move.matches("^F[0-3]L[0-6]$")) {
-				this.tableau[Integer.parseInt(move.substring(1, 2))]
-				             .drawCard(this.foundation[Integer.parseInt(move.substring(3))]);
+				this.tableau[Integer.parseInt(move.substring(3))]
+				             .drawCard(this.foundation[Integer.parseInt(move.substring(1,2))]);
 			}
 			
-			this.printTablaeu();
+			// Flytte bygg fra Tablå til Tablå (IKKE IMPLEMENTERT ENDA!)
+			else if (move.matches("^L[0-6]L[0-6]B$")) {
+				//this.tableau[Integer.parseInt(move.substring(3))]
+				//             .drawCard(this.tableau[Integer.parseInt(move.substring(1,2))]);
+				//if (!this.tableau[Integer.parseInt(move.substring(1,2))].isEmpty()) {
+				//	this.tableau[Integer.parseInt(move.substring(1,2))].peek().setFaceUp();
+				//}
+			}
+			
+			this.printGame();
 		}
 		System.out.println("Enten vant du eller så ga du opp, gratulerer!");
 		scanner.close();
