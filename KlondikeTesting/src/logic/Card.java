@@ -1,5 +1,6 @@
 package logic;
 
+import java.awt.Color;
 import java.awt.Image;
 
 public class Card {

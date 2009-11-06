@@ -1,7 +1,6 @@
 package logic;
 
 public class FoundationPile extends CardPile {
-	//foundation er der du bygger opp gjennom spillet
 
 	public FoundationPile() {
 		super();

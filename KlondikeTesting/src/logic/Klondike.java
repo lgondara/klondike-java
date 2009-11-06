@@ -70,12 +70,12 @@ public class Klondike {
 		}
 
 		//debug();
-		System.out.println("Ferdig med å dele ut ut");
+		//System.out.println("Ferdig med å dele ut ut");
 	}
 
-	private void debug() {
-		System.err.println("Lengden er: " + this.drawPile.size());
-	}
+	//private void debug() {
+	//	System.err.println("Lengden er: " + this.drawPile.size());
+	//}
 	
 	public DrawPile getDrawPile() {
 		return this.drawPile;
@@ -85,11 +85,11 @@ public class Klondike {
 		return this.throwPile;
 	}
 
+	/*
 	public void dealThrowCards(){
 		this.throwPile.addCard(this.drawPile);
 	}
 	
-	//Denne skal flytte riktig fra en bunke til en annen
 	public void moveFromOnePileToTheAnother(int onePile, int anotherPile){
 		//litt oversikt bare:
 //		BuildPile onePileBuildPile = this.buildPile[onePile];
@@ -112,6 +112,7 @@ public class Klondike {
 			}
 		}
 	}
+	*/
 	
 	/**
 	 * Metode for å skrive ut brettet
@@ -144,11 +145,16 @@ public class Klondike {
 		System.out.println("\n");
 		
 		for (int i = 0; i < tableau.length; i++) {
-			System.out.println("L" + i + ":  " + this.tableau[i].toString());
+			if (this.tableau[i].isEmpty()) {
+				System.out.println("L" + i + ":  Empty");
+			}
+			else {
+				System.out.println("L" + i + ":  " + this.tableau[i].toString());
+			}
 		}
 	}
 	
-	
+	/*
 	public void pushThrowCardToTableau(TableauPile tp){
 		if(!this.throwPile.isEmpty()){
 			if(tp.canTake(this.throwPile.peek())){
@@ -156,6 +162,7 @@ public class Klondike {
 			}
 		}
 	}
+	*/
 	
 	/**
 	 * Metode som følger med på trekk og oppdaterer spillet
@@ -172,17 +179,22 @@ public class Klondike {
 				this.drawPile.drawCard(this.throwPile);
 			}
 			
-			//Funker ikke, canTake() gir false uansett.
+			//Flytte kort fra Tablå til Tablå
 			else if (move.matches("^L[0-6]L[0-6]$")) {
-				this.tableau[Integer.parseInt(move.substring(1, 2))]
-				             .drawCard(this.tableau[Integer.parseInt(move.substring(3))]);
+				this.tableau[Integer.parseInt(move.substring(3))]
+				             .drawCard(this.tableau[Integer.parseInt(move.substring(1,2))]);
+				if (!this.tableau[Integer.parseInt(move.substring(1,2))].isEmpty()) {
+					this.tableau[Integer.parseInt(move.substring(1,2))].peek().setFaceUp();
+				}
 			}
 			
 			//Flytte kort fra Tablå til Fundament
 			else if (move.matches("^L[0-6]F[0-3]$")) {
 				this.foundation[Integer.parseInt(move.substring(3))]
 				                .addCard(this.tableau[Integer.parseInt(move.substring(1, 2))]);
-				this.tableau[Integer.parseInt(move.substring(1, 2))].peek().setFaceUp();
+				if (!this.tableau[Integer.parseInt(move.substring(1, 2))].isEmpty()) {
+					this.tableau[Integer.parseInt(move.substring(1, 2))].peek().setFaceUp();
+				}
 			}
 			
 			//Flytte kort fra Kastebunken til Fundament
@@ -190,10 +202,9 @@ public class Klondike {
 				this.foundation[Integer.parseInt(move.substring(2))].addCard(this.throwPile);
 			}
 			
-			//Funker ikke, samme problem som LXLX
+			//Flytte kort fra Kastebunke til Tablå
 			else if (move.matches("^TL[0-6]$")) {
-				this.tableau[Integer.parseInt(move.substring(2))]
-				                .drawCard(this.throwPile);
+				this.tableau[Integer.parseInt(move.substring(2))].drawCard(this.throwPile);
 			}
 			
 			//Ikke testet
@@ -212,7 +223,4 @@ public class Klondike {
 		Klondike k = new Klondike();		
 		k.play();
 	}
-	
-	
-
 }
