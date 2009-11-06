@@ -10,6 +10,9 @@ public class Klondike {
 	private ThrowPile throwPile;
 	private DrawPile drawPile;
 
+	/**
+	 * Konstruktør som lager de forskjellige bunkene og starter utdeling av kort
+	 */
 	public Klondike() {
 		foundation = new FoundationPile[4];
 		for(int i = 0; i< foundation.length ; i++){
@@ -29,10 +32,17 @@ public class Klondike {
 		this.dealAllCards();
 	}
 
+	/**
+	 * Metode som sjekker om spillet er ferdig
+	 * @return
+	 */
 	public boolean solved() {
 		return this.foundation[0].solved() && this.foundation[1].solved() && this.foundation[2].solved() && this.foundation[3].solved();
 	}
-	//superhbra klasse deler ut alt!
+	
+	/**
+	 * Metode som deler ut kort til Tablåbunkene
+	 */
 	public void dealAllCards(){
 		//gammel kode som ikke funker
 		//		for(int i = 0; i<7;i++){
@@ -103,6 +113,9 @@ public class Klondike {
 		}
 	}
 	
+	/**
+	 * Metode for å skrive ut brettet
+	 */
 	public void printTablaeu() {
 		if(this.drawPile.isEmpty()) {
 			System.out.println("D: Empty");
@@ -144,35 +157,54 @@ public class Klondike {
 		}
 	}
 	
+	/**
+	 * Metode som følger med på trekk og oppdaterer spillet
+	 */
 	public void play() {
 		String move = "";
 		Scanner scanner = new Scanner(System.in);
 		this.printTablaeu();
-		while (!move.equals("done")) {
+		while (!move.equals("done") || this.solved()) {
 			move = scanner.nextLine();
+			
+			//Flytte kort fra Trekkbunke til Kastebunke
 			if (move.equals("D")) {
 				this.drawPile.drawCard(this.throwPile);
 			}
+			
+			//Funker ikke, canTake() gir false uansett.
 			else if (move.matches("^L[0-6]L[0-6]$")) {
 				this.tableau[Integer.parseInt(move.substring(1, 2))]
 				             .drawCard(this.tableau[Integer.parseInt(move.substring(3))]);
 			}
+			
+			//Flytte kort fra Tablå til Fundament
 			else if (move.matches("^L[0-6]F[0-3]$")) {
 				this.foundation[Integer.parseInt(move.substring(3))]
-				                .addCard(this.tableau[Integer.parseInt(move.substring(1, 2))].peek());
+				                .addCard(this.tableau[Integer.parseInt(move.substring(1, 2))]);
+				this.tableau[Integer.parseInt(move.substring(1, 2))].peek().setFaceUp();
 			}
+			
+			//Flytte kort fra Kastebunken til Fundament
 			else if (move.matches("^TF[0-3]$")) {
-				
+				this.foundation[Integer.parseInt(move.substring(2))].addCard(this.throwPile);
 			}
+			
+			//Funker ikke, samme problem som LXLX
 			else if (move.matches("^TL[0-6]$")) {
-				
+				this.tableau[Integer.parseInt(move.substring(2))]
+				                .drawCard(this.throwPile);
 			}
+			
+			//Ikke testet
 			else if (move.matches("^F[0-3]L[0-6]$")) {
-				
+				this.tableau[Integer.parseInt(move.substring(1, 2))]
+				             .drawCard(this.foundation[Integer.parseInt(move.substring(3))]);
 			}
 			
 			this.printTablaeu();
 		}
+		System.out.println("Enten vant du eller så ga du opp, gratulerer!");
 		scanner.close();
 	}
 	

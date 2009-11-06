@@ -18,10 +18,12 @@ public class FoundationPile extends CardPile {
 		}
 	}
 
-	public void addCard(Card card) {
-		if(this.canTake(card)){
-			this.push(card);
-			this.peek().setFaceUp();
+	public void addCard(CardPile cardPile) {
+		if(this.canTake(cardPile.peek())){
+			this.push(cardPile.pop());
+		}
+		else {
+			System.err.println("Illegal move!");
 		}
 	}
 
