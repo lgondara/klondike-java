@@ -8,7 +8,7 @@ public class TableauPile extends CardPile {
 			return card.getFace() == 12;
 		}
 		else {
-			return (card.getSuit() != this.peek().getSuit() 
+			return (card.getColor() != this.peek().getColor() 
 					&& card.getFace() == this.peek().getFace()-1)
 					&& this.peek().getFaceUp();
 		}
