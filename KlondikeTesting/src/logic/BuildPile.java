@@ -6,6 +6,16 @@ public class BuildPile extends CardPile {
 	public BuildPile(){
 		super();
 	}
+	
+	//this objektet blir kappa av, og returneres som en ny buildpile chopet av
+	public BuildPile chopBuildPile(int numberOfChoppyChops){
+		BuildPile bp = new BuildPile();
+		while(numberOfChoppyChops > 0){
+			bp.push(this.pop());
+			numberOfChoppyChops--;
+		}
+		return bp;
+	}
 
 	public BuildPile moveBuildPile(TableauPile target){
 		CardPile tempPopPile = new CardPile();
@@ -26,23 +36,31 @@ public class BuildPile extends CardPile {
 
 //	testing
 		public static void main(String[] args) {
-			Card a = new Card(3, "C");
+			Card a = new Card(4, "H");
 			a.setFaceUp();
-			Card b = new Card(2, "H");
+			Card b = new Card(3, "C");
 			b.setFaceUp();
-			Card c = new Card(4, "H");
+			Card c = new Card(2, "H");
 			c.setFaceUp();
+			
+			Card d = new Card(4, "D");
+			d.setFaceUp();
 			
 			BuildPile bp = new BuildPile();;
 			bp.push(a);
 			bp.push(b);
+			bp.push(c);
 			
 			System.out.println(bp);
 			TableauPile tp = new TableauPile();
 			
-			tp.push(c);
+			tp.push(d);
 			System.out.println(tp);
-			BuildPile returnbp = bp.moveBuildPile(tp);
+			
+			//buildpile splittes på 2 og flyttes fra H5(bp) til D5(tp)
+			
+			BuildPile newpile = bp.chopBuildPile(2);
+			BuildPile returnbp = newpile.moveBuildPile(tp);
 			System.out.println(returnbp);	
 		
 		}
