@@ -26,10 +26,9 @@ public class FoundationPile extends CardPile {
 		}
 	}
 
-	//FIX
-	public void addBuild(BuildPile pile) {
-
-	}
+//	public void addBuild(BuildPile pile) {
+//
+//	}
 
 	public boolean solved() {
 		return this.peek().getFace() == 12;

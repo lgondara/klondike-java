@@ -1,5 +1,10 @@
 package logic;
 
+/**
+ * 
+ * Klasse for Tablåbunker
+ *
+ */
 public class TableauPile extends CardPile {
 	
 	/**
@@ -16,10 +21,6 @@ public class TableauPile extends CardPile {
 		}
 	}
 	
-	public boolean canTake(BuildPile pile) {
-		return false;
-	}
-	
 	/**
 	 * Metode som trekker et kort fra en bunke og pusher det inn i en annen
 	 */
@@ -28,8 +29,28 @@ public class TableauPile extends CardPile {
 			this.push(cardPile.pop());
 		}
 	}
+
+	public boolean canTake( BuildPile buildPile) {
+
+		if (canTake(buildPile.peek())) {
+			return true;
+		}
+		return false;
+	}
 	
-	public void drawBuild() {
-		
+	public void drawBuild(CardPile cardPile, BuildPile buildPile) {
+		while (cardPile.size()>0) {
+			if(cardPile.peek().getFaceUp()) {
+				buildPile.push(cardPile.pop());
+			}
+			else {
+				break;
+			}
+		}
+		if (canTake(buildPile)) {
+			while(buildPile.size()>0) {
+				this.push(buildPile.pop());
+			}
+		}
 	}
 }

@@ -29,9 +29,6 @@ public class DrawPile extends CardPile {
 			}
 		}	
 		this.shuffle();
-		//System.out.println("Lagde ny kortstokk" + this);
-		//System.out.println("Størrelse: "+ this.size());
-		
 	}
 	
 	/** Metode for å stokke en kortstokk på 52 kort.
