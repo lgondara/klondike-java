@@ -65,7 +65,9 @@ public class Klondike {
 				//System.out.println(this.drawPile.size());
 				currentTableauPile.push(this.drawPile.pop());
 			}
-			currentTableauPile.get(currentTableauPile.size() - 1).setFaceUp();
+			Card card =currentTableauPile.pop();
+			card.setFaceUp();
+			this.buildPile[cardsToDeal-1].push(card);
 			cardsToDeal++;				
 		}
 
@@ -85,22 +87,32 @@ public class Klondike {
 		return this.throwPile;
 	}
 
-	/*
+
 	public void dealThrowCards(){
 		this.throwPile.addCard(this.drawPile);
 	}
 	
 	public void moveFromOnePileToTheAnother(int onePile, int anotherPile){
 		//litt oversikt bare:
-//		BuildPile onePileBuildPile = this.buildPile[onePile];
-//		BuildPile anotherPileBuildPile = this.buildPile[anotherPile];
-//		TableauPile onePileTableauPile = this.tableau[anotherPile];
-//		TableauPile anotherPileTableauPile = this.tableau[anotherPile];
+		//	BuildPile onePileBuildPile = this.buildPile[onePile];
+		//	BuildPile anotherPileBuildPile = this.buildPile[anotherPile];
+		//	TableauPile onePileTableauPile = this.tableau[anotherPile];
+		//	TableauPile anotherPileTableauPile = this.tableau[anotherPile];
+		//	Buildpile: tenker at alle kort om er vendt opp i bunken skal ligge i buildpile,
+		//	Tableaupile: og alle kort som ligger ned ligger i tableaupile
 		
-		if(this.buildPile[onePile].size() == 0){
-			Card temp = this.tableau[onePile].pop();
-			temp.setFaceUp();
-			this.buildPile[onePile].push(temp);
+		//I utgangspunktet når brettet er tomt(new Klondike(),
+		//vil det være null ting i buildpilene bortover brettet
+		//Og dette gjelder også når det ikke ligger noe oppå en tableaupile, dvs når det er kun en bunke med kort som ligger ned i en tableau.
+		if(this.buildPile[onePile].size() == 0 && this.buildPile[anotherPile].size() == 0){
+			Card temp1 = this.tableau[onePile].pop();
+			temp1.setFaceUp();
+			this.buildPile[onePile].push(temp1);
+		}
+		
+		//sjekker om det er 1 ting i en buildpile, dvs flytter 1 kort fra onePile til anotherPile
+		if(this.buildPile[onePile].size() == 1){
+//			this.buildPile[onePile].push(item)
 		}
 		
 	}
@@ -112,7 +124,7 @@ public class Klondike {
 			}
 		}
 	}
-	*/
+	
 	
 	/**
 	 * Metode for å skrive ut brettet
@@ -150,6 +162,14 @@ public class Klondike {
 			}
 			else {
 				System.out.println("L" + i + ":  " + this.tableau[i].toString());
+			}
+		}
+		for(int i = 0; i < buildPile.length; i++){
+			if(this.buildPile[i].isEmpty()){
+				System.out.println("BuildPile empty");
+			}
+			else{
+				System.out.println("B" + i + ":  " + this.buildPile[i].toString());
 			}
 		}
 	}
