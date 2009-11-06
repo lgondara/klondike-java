@@ -15,11 +15,11 @@ public class BuildPile extends CardPile {
 //		}
 //	}
 
-	public BuildPile moveBuildPile(TableauPile target, int i){
+	public BuildPile moveBuildPile(TableauPile target, int fromIndex){
 		CardPile tempPopPile = new CardPile();
 		BuildPile returnPile = new BuildPile();
 		
-		if(target.canTake(this.get(i))){
+		if(target.canTake(this.get(fromIndex))){
 			while(this.size() > 0){
 				tempPopPile.push(this.pop());
 			}
@@ -38,20 +38,21 @@ public class BuildPile extends CardPile {
 			a.setFaceUp();
 			Card b = new Card(2, "H");
 			b.setFaceUp();
-			Card c = new Card(4, "C");
+			Card c = new Card(4, "H");
 			c.setFaceUp();
 			
 			BuildPile bp = new BuildPile();;
-			bp.push(b);
 			bp.push(a);
+			bp.push(b);
 			
 			System.out.println(bp);
 			TableauPile tp = new TableauPile();
 			
 			tp.push(c);
 			System.out.println(tp);
-			BuildPile returnbp = bp.moveBuildPile(tp, 1);
+			BuildPile returnbp = bp.moveBuildPile(tp, 0);
 			System.out.println(returnbp);
+			System.out.println(returnbp.peek());
 			
 
 			

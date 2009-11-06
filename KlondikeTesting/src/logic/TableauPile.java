@@ -10,7 +10,7 @@ public class TableauPile extends CardPile {
 		else {
 			return (card.getColor() != this.peek().getColor() 
 					&& card.getFace() == this.peek().getFace()-1)
-					&& card.getFaceUp();
+					&& this.peek().getFaceUp();
 		}
 	}
 	
