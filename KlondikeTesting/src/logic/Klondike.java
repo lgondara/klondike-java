@@ -32,7 +32,7 @@ public class Klondike {
 	public boolean solved() {
 		return this.foundation[0].solved() && this.foundation[1].solved() && this.foundation[2].solved() && this.foundation[3].solved();
 	}
-	//superhax klasse deler ut alt!
+	//superhbra klasse deler ut alt!
 	public void dealAllCards(){
 		//gammel kode som ikke funker
 		//		for(int i = 0; i<7;i++){
@@ -77,6 +77,22 @@ public class Klondike {
 
 	public void dealThrowCards(){
 		this.throwPile.addCard(this.drawPile);
+	}
+	
+	//Denne skal flytte riktig fra en bunke til en annen
+	public void moveFromOnePileToTheAnother(int onePile, int anotherPile){
+		//litt oversikt bare:
+//		BuildPile onePileBuildPile = this.buildPile[onePile];
+//		BuildPile anotherPileBuildPile = this.buildPile[anotherPile];
+//		TableauPile onePileTableauPile = this.tableau[anotherPile];
+//		TableauPile anotherPileTableauPile = this.tableau[anotherPile];
+		
+		if(this.buildPile[onePile].size() == 0){
+			Card temp = this.tableau[onePile].pop();
+			temp.setFaceUp();
+			this.buildPile[onePile].push(temp);
+		}
+		
 	}
 
 	public void pushThrowCardToFoundation(FoundationPile fp){
