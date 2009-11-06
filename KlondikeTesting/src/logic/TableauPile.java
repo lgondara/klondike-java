@@ -25,15 +25,15 @@ public class TableauPile extends CardPile {
 	}
 	
 	
-	public boolean canTake(BuildPile pile) {
-		return false;
-	}
+//	public boolean canTake(BuildPile pile) {
+//		return false;
+//	}
 	
 	public void drawCard(CardPile cardPile) {	
 		System.out.println(canTake(this.peek()));
 		if (canTake(this.peek())) {
-			cardPile.push(this.pop());
 			this.peek().setFaceUp();
+			cardPile.push(this.pop());
 		}
 	}
 	
