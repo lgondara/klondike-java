@@ -11,7 +11,7 @@ public class Klondike {
 	private DrawPile drawPile;
 
 	/**
-	 * Konstruktør som lager de forskjellige bunkene og starter utdeling av kort
+	 * KonstruktÃ¸r som lager de forskjellige bunkene og starter utdeling av kort
 	 */
 	public Klondike() {
 		
@@ -41,10 +41,10 @@ public class Klondike {
 	}
 	
 	/**
-	 * Metode som deler ut kort til Tablåbunkene
+	 * Metode som deler ut kort til TablÃ¥bunkene
 	 */
 	public void dealAllCards(){
-		//gammel kode som ikke funker, sånn man egentlig skal dele ut
+		//gammel kode som ikke funker, sÃ¥nn man egentlig skal dele ut
 		//		for(int i = 0; i<7;i++){
 		//			int counter = 0;
 		//			debug();
@@ -79,7 +79,7 @@ public class Klondike {
 	}
 	
 	/**
-	 * Metode for å skrive ut brettet
+	 * Metode for Ã¥ skrive ut brettet
 	 */
 	public void printGame() {
 		if(this.drawPile.isEmpty()) {
@@ -119,7 +119,7 @@ public class Klondike {
 	}
 	
 	/**
-	 * Metode som følger med på trekk og oppdaterer spillet
+	 * Metode som fÃ¸lger med pÃ¥ trekk og oppdaterer spillet
 	 */
 	public void play() {
 		String move = "";
@@ -133,7 +133,7 @@ public class Klondike {
 				this.drawPile.drawCard(this.throwPile);
 			}
 			
-			//Flytte kort fra Tablå til Tablå
+			//Flytte kort fra TablÃ¥ til TablÃ¥
 			else if (move.matches("^L[0-6]L[0-6]$")) {
 				this.tableau[Integer.parseInt(move.substring(3))]
 				             .drawCard(this.tableau[Integer.parseInt(move.substring(1,2))]);
@@ -142,7 +142,7 @@ public class Klondike {
 				}
 			}
 			
-			//Flytte kort fra Tablå til Fundament
+			//Flytte kort fra TablÃ¥ til Fundament
 			else if (move.matches("^L[0-6]F[0-3]$")) {
 				this.foundation[Integer.parseInt(move.substring(3))]
 				                .addCard(this.tableau[Integer.parseInt(move.substring(1, 2))]);
@@ -156,18 +156,18 @@ public class Klondike {
 				this.foundation[Integer.parseInt(move.substring(2))].addCard(this.throwPile);
 			}
 			
-			//Flytte kort fra Kastebunke til Tablå
+			//Flytte kort fra Kastebunke til TablÃ¥
 			else if (move.matches("^TL[0-6]$")) {
 				this.tableau[Integer.parseInt(move.substring(2))].drawCard(this.throwPile);
 			}
 			
-			//Flytte fra Fundamentet til Tablået
+			//Flytte fra Fundamentet til TablÃ¥et
 			else if (move.matches("^F[0-3]L[0-6]$")) {
 				this.tableau[Integer.parseInt(move.substring(3))]
 				             .drawCard(this.foundation[Integer.parseInt(move.substring(1,2))]);
 			}
 			
-			// Flytte bygg fra Tablå til Tablå
+			// Flytte bygg fra TablÃ¥ til TablÃ¥
 			else if (move.matches("^L[0-6]L[0-6]B$")) {
 				this.tableau[Integer.parseInt(move.substring(3,4))]
 				             .drawBuild(this.tableau[Integer.parseInt(move.substring(1,2))], this.buildPile);
@@ -178,7 +178,7 @@ public class Klondike {
 			
 			this.printGame();
 		}
-		System.out.println("Enten vant du eller så ga du opp, gratulerer!");
+		System.out.println("Enten vant du eller sÃ¥ ga du opp, gratulerer!");
 		scanner.close();
 	}
 	
