@@ -1,0 +1,1 @@
+Small and fast implementation of the solitaire game klondike
